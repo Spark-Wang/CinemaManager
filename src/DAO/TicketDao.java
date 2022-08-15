@@ -13,7 +13,7 @@ public interface TicketDao {
     //根据电影名返回订票信息
     List<Ticket> findTicketByMovie(int M_id);
     //根据影票返回场次
-    List<Scence> getScence(String sql, String[] param);
+    List<Scence> findScenceFromTicket(String sql, String[] param);
 
     //添加订票
     int insertTicket(String sql, String[] param);

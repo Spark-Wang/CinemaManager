@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface MovieDao {
     //获取电影对象
-    List<Movie> getMovies(String sql, String[] params);
+    List<Movie> getMovies(String sql, String[] param);
     //更改电影对象
-    int changeMovies(String sql, String[] params);
+    int changeMovies(String sql, String[] param);
 }

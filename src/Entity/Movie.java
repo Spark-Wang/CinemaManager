@@ -63,7 +63,4 @@ public class Movie {
     public void setM_endTime(Timestamp m_endTime) {
         M_endTime = m_endTime;
     }
-
-
-
 }

@@ -18,7 +18,22 @@ public class BaseDao {
 
     public static String DBPASS; // 数据库密码
 
-    Connection conn = null;// 数据连接对象
+    protected Connection conn = null; // 保存数据库连接
+
+    protected PreparedStatement pstmt = null; // 用于执行SQL语句
+
+    protected ResultSet rs = null; // 用户保存查询到的结果集
+
+    protected void connectSql(String sql, String[] param) throws ClassNotFoundException, SQLException {
+        conn = getConn();
+        pstmt = conn.prepareStatement(sql);
+        if (param != null) {
+            for (int i = 0; i < param.length; i++) {
+                pstmt.setString(i + 1, param[i]);
+            }
+        }
+        rs = pstmt.executeQuery();
+    }
 
     static{
         init();
@@ -98,7 +113,6 @@ public class BaseDao {
                     pstmt.setObject(i + 1, param[i]); // 为预编译sql设置参数
                 }
             }
-
             num = pstmt.executeUpdate(); // 执行SQL语句
         } catch (ClassNotFoundException e) {
             e.printStackTrace(); // 处理ClassNotFoundException异常
@@ -110,18 +124,17 @@ public class BaseDao {
         return num;
     }
 
-    public static void main(String[] args) {
-        BaseDao baseDao = new BaseDao();
-        Connection conn = null;
-        try{
-            conn = baseDao.getConn();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally {
-            baseDao.closeAll(conn, null, null);
-        }
-
-    }
+//    public static void main(String[] args) {
+//        BaseDao baseDao = new BaseDao();
+//        Connection conn = null;
+//        try{
+//            conn = baseDao.getConn();
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }finally {
+//            baseDao.closeAll(conn, null, null);
+//        }
+//    }
 }

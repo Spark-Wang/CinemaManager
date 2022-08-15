@@ -46,7 +46,6 @@ create table ticket
     C_id      int          not null,
     M_id      int          not null,
     H_id      int          not null,
-    price     int          not null,
     H_line    varchar(255) not null,
     H_row     varchar(255) not null,
     T_time    timestamp    not null,

@@ -37,12 +37,4 @@ public class Scence {//场次
         S_time = s_time;
     }
 
-//    public int getS_id() {
-//        return S_id;
-//    }
-//
-//    public void setS_id(int s_id) {
-//        S_id = s_id;
-//    }
-
 }
