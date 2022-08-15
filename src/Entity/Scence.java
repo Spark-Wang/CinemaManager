@@ -10,8 +10,8 @@ public class Scence {//场次
 
     private int M_id;
     private int H_id;
-    private Timestamp S_Time;
-    private int S_id;
+    private Timestamp S_time;
+//    private int S_id;
 
     public int getM_id() {
         return M_id;
@@ -29,20 +29,20 @@ public class Scence {//场次
         H_id = h_id;
     }
 
-    public Timestamp getS_Time() {
-        return S_Time;
+    public Timestamp getS_time() {
+        return S_time;
     }
 
-    public void setS_Time(Timestamp s_Time) {
-        S_Time = s_Time;
+    public void setS_time(Timestamp s_time) {
+        S_time = s_time;
     }
 
-    public int getS_id() {
-        return S_id;
-    }
-
-    public void setS_id(int s_id) {
-        S_id = s_id;
-    }
+//    public int getS_id() {
+//        return S_id;
+//    }
+//
+//    public void setS_id(int s_id) {
+//        S_id = s_id;
+//    }
 
 }

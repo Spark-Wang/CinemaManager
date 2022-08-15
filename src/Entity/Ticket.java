@@ -1,26 +1,28 @@
 package Entity;
 
+import java.sql.Timestamp;
+
 /**
  * @author Peiqi Wang
  * @date 2022-08-14
  */
 public class Ticket {
 
-    private int S_id;//场次ID
+//    private int S_id;//场次ID
     private int C_id;//订票用户ID
-//    private int M_id;//电影ID
-//    private int H_id;//放映厅ID
+    private int M_id;//电影ID
+    private int H_id;//放映厅ID
     private double price;//票价
     private int H_line;//排
     private int H_row;//列
-
-    public int getS_id() {
-        return S_id;
-    }
-
-    public void setS_id(int s_id) {
-        S_id = s_id;
-    }
+    private Timestamp T_time;//放映时间
+//    public int getS_id() {
+//        return S_id;
+//    }
+//
+//    public void setS_id(int s_id) {
+//        S_id = s_id;
+//    }
 
 //    public int getU_id() {
 //        return U_id;

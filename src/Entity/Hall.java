@@ -9,8 +9,8 @@ public class Hall {
     private int H_id;
     private String H_name;
     private int H_capacity;
-    private int H_row;
     private int H_line;
+    private int H_row;
 
     public int getH_capacity() {
         return H_capacity;

@@ -109,4 +109,19 @@ public class BaseDao {
         }
         return num;
     }
+
+    public static void main(String[] args) {
+        BaseDao baseDao = new BaseDao();
+        Connection conn = null;
+        try{
+            conn = baseDao.getConn();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }finally {
+            baseDao.closeAll(conn, null, null);
+        }
+
+    }
 }

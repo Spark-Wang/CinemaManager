@@ -8,7 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library>
+      <library name="mysql-connector-java-5.1.0-bin.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/bin/mysql-connector-java-5.1.0-bin.jar!/" />
         </CLASSES>
@@ -16,5 +16,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="mysql-connector-java-5.1.0-bin" level="project" />
   </component>
 </module>
