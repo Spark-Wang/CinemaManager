@@ -4,9 +4,6 @@ import DAO.BaseDao;
 import DAO.HallDao;
 import Entity.Hall;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +19,6 @@ public class HallDaoImpl extends BaseDao implements HallDao {
     public List<Hall> getHall(String sql, String[] param) {
         List<Hall> hallList = new ArrayList<>();
         try{
-//            conn = getConn();
-//            pstmt = conn.prepareStatement(sql);
-//            if(param != null){
-//                for(int i = 0;i < param.length;i ++){
-//                    pstmt.setString(i + 1, param[i]);
-//                }
-//            }
-//            rs = pstmt.executeQuery();
             connectSql(sql,param);
             Hall hall = null;
             while(rs.next()){

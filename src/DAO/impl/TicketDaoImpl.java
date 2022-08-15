@@ -89,6 +89,52 @@ public class TicketDaoImpl extends BaseDao implements TicketDao {
     }
 
     /**
+     * 返回电影票完整的信息，通过用户权限的不同，显示不同的返回值
+     * @param C_id
+     * @param C_type
+     * @return 用户名 电影名 影厅ID 影厅名 座位行列 时间 票价
+     */
+    @Override
+    public List<List<String>> getFullTicket(int C_id, String C_type) {
+        List<List<String>> ticketList = new ArrayList<>();
+        try{
+            String sql;
+            if(C_type.equals("Manager")){
+                sql = "select customer.C_name, movie.M_name, hall.H_id, hall.H_name, ticket.H_line, ticket.H_row, ticket.T_time, movie.M_price\n"
+                        + "from ticket join customer on ticket.C_id = customer.C_id "
+                        + "join movie on ticket.M_id = movie.M_id "
+                        + "join hall on ticket.H_id = hall.H_id";
+            }else{
+                sql = "select customer.C_name, movie.M_name, hall.H_id, hall.H_name, ticket.H_line, ticket.H_row, ticket.T_time, movie.M_price\n"
+                        + "from ticket join customer on ticket.C_id = customer.C_id "
+                        + "join movie on ticket.M_id = movie.M_id "
+                        + "join hall on ticket.H_id = hall.H_id"
+                        + "where ticket.C_id = " + C_id;
+            }
+            connectSql(sql,null);
+            while(rs.next()){
+                List<String> ticket = new ArrayList<>();
+                ticket.add(rs.getString(1));
+                ticket.add(rs.getString(2));
+                ticket.add(rs.getInt(3) + "");
+                ticket.add(rs.getString(4));
+                ticket.add(rs.getInt(5) + "");
+                ticket.add(rs.getInt(6) + "");
+                ticket.add(rs.getTimestamp(7) + "");
+                ticket.add(rs.getDouble(8) + "");
+                ticketList.add(ticket);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }finally {
+            super.closeAll(conn, pstmt, rs);
+        }
+        return ticketList;
+    }
+
+    /**
      * 为上层执行SQL的接口
      * @param sql
      * @param param
@@ -119,5 +165,11 @@ public class TicketDaoImpl extends BaseDao implements TicketDao {
 //        System.out.println(ticketList.get(0).getH_id()+" "+ticketList.get(0).getT_time());
 //        List<Scence> scenceList = ticketDao.findScenceFromTicket("select * from ticket",null);
 //        System.out.println(scenceList.get(0).getH_id()+" "+scenceList.get(0).getS_time());
+//        List<List<String>> res = ticketDao.getFullTicket(1001,"Manager");
+//        for(int i = 0;i < res.size();i ++){
+//            List<String> t = res.get(i);
+//            //注意List的get方法是从0开始计数的，而ResultSet是从1开始get
+//            System.out.format("%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s",(i + 1),t.get(0),t.get(1),t.get(2),t.get(3),t.get(4),t.get(5),t.get(6),t.get(7));
+//        }
 //    }
 }

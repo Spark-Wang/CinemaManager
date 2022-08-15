@@ -14,6 +14,8 @@ public interface TicketDao {
     List<Ticket> findTicketByMovie(int M_id);
     //根据影票返回场次
     List<Scence> findScenceFromTicket(String sql, String[] param);
+    //返回票据中的完整信息 有电影名等其他表中的项
+    List<List<String>> getFullTicket(int C_id, String C_type);
 
     //添加订票
     int insertTicket(String sql, String[] param);
