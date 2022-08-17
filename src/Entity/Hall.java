@@ -12,6 +12,17 @@ public class Hall {
     private int H_line;
     private int H_row;
 
+    public Hall(){
+    }
+
+    public Hall(int H_id, String H_name, int H_capacity, int H_line, int H_row){
+        this.H_id = H_id;
+        this.H_name = H_name;
+        this.H_capacity = H_capacity;
+        this.H_line = H_line;
+        this.H_row = H_row;
+    }
+
     public int getH_capacity() {
         return H_capacity;
     }

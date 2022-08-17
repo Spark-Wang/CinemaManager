@@ -11,6 +11,23 @@ public class Customer {
     private String C_password;
     private String C_type;
 
+    public Customer(){
+
+    }
+    /**
+     *
+     * @param C_id
+     * @param C_name
+     * @param C_password
+     * @param C_type
+     */
+    public Customer(int C_id, String C_name, String C_password, String C_type){
+        this.C_id = C_id;
+        this.C_name = C_name;
+        this.C_password = C_password;
+        this.C_type = C_type;
+    }
+
     public String getC_password() {
         return C_password;
     }

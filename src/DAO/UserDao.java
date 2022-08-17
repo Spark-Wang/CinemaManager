@@ -14,7 +14,7 @@ public interface UserDao {
     //返回要求的用户列表
     List<Customer> getUser(String sql, String[] param);
     //新增用户
-    int addUser(String sql, String[] param);
+    int addUser(Customer customer);
     //更新用户信息
     int updateUser(String sql, String[] param);
 }

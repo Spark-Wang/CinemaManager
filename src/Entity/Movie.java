@@ -15,6 +15,17 @@ public class Movie {
     private Timestamp M_startTime;
     private Timestamp M_endTime;
 
+    public Movie(){
+    }
+
+    public Movie(int M_id, String M_name, double M_price, int M_durTime, Timestamp M_startTime, Timestamp M_endTime){
+        this.M_id = M_id;
+        this.M_name = M_name;
+        this.M_price = M_price;
+        this.M_durTime = M_durTime;
+        this.M_startTime = M_startTime;
+        this.M_endTime = M_endTime;
+    }
 
     public int getM_id() {
         return M_id;

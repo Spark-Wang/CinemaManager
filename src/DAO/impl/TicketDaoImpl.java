@@ -4,9 +4,12 @@ import DAO.BaseDao;
 import DAO.TicketDao;
 import Entity.Scence;
 import Entity.Ticket;
+import com.sun.media.sound.RealTimeSequencerProvider;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -132,6 +135,41 @@ public class TicketDaoImpl extends BaseDao implements TicketDao {
             super.closeAll(conn, pstmt, rs);
         }
         return ticketList;
+    }
+
+    /**
+     *
+     * @return 电影名 影厅号 影厅名 时间 电影时长 票价
+     */
+    @Override
+    public List<List<String>> findAllScence() {
+        List<List<String>> scenceList = new ArrayList<>();
+        try{
+            Date date = new Date();
+            Timestamp timestamp = new Timestamp(date.getTime());
+            String sql = "select movie.M_name, hall.H_id, hall.H_name, scence.T_time, movie.M_durTime, movie.M_price "
+                    + "from scence join movie on scence.M_id = movie.M_id "
+                    + "join hall on scence.H_id = hall.H_id "
+                    + "where scence.S_time > " + timestamp;
+            connectSql(sql, null);
+            while(rs.next()){
+                List<String> scence = new ArrayList<>();
+                scence.add(rs.getString(1));
+                scence.add(rs.getInt(2)+"");
+                scence.add(rs.getString(3));
+                scence.add(rs.getTimestamp(4) + "");
+                scence.add(rs.getInt(5) + "");
+                scence.add(rs.getDouble(6) + "");
+                scenceList.add(scence);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }finally {
+            super.closeAll(conn, pstmt, rs);
+        }
+        return scenceList;
     }
 
     /**

@@ -1,12 +1,10 @@
-package Authority;
-
-import Entity.*;
-
+package Services;
 /**
  * @author Peiqi Wang
- * @date 2022-08-14
+ * @date 2022-08-17
  */
-public interface Normal {
+public interface TicketHandler {
+
     void search();
 
     void order();
@@ -14,4 +12,5 @@ public interface Normal {
     void refund();
 
     void changeTicket();
+
 }

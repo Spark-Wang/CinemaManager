@@ -1,5 +1,6 @@
 package Entity;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 
 /**
@@ -11,7 +12,16 @@ public class Scence {//场次
     private int M_id;
     private int H_id;
     private Timestamp S_time;
-//    private int S_id;
+
+    public Scence(){
+    }
+
+    public Scence(int M_id, int H_id, Timestamp S_time){
+        this.M_id = M_id;
+        this.H_id = H_id;
+        this.S_time = S_time;
+    }
+
 
     public int getM_id() {
         return M_id;

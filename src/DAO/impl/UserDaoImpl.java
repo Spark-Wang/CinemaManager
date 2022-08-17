@@ -17,12 +17,6 @@ import java.util.List;
  **/
 
 public class UserDaoImpl extends BaseDao implements UserDao {
-    private Connection conn = null; //建立的连接
-
-    private PreparedStatement pstmt = null; //将要预编的SQL
-
-    private ResultSet rs = null;//结果集
-
 
     @Override
     public List<Customer> getAllUser() {
@@ -53,7 +47,9 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public int addUser(String sql, String[] param) {
+    public int addUser(Customer customer) {
+        String sql = "insert into customer values (?, ?, ?, ?)";
+        Object[] param = {customer.getC_id(), customer.getC_name(), customer.getC_password(), customer.getC_type()};
         return super.executeSQL(sql, param);
     }
 

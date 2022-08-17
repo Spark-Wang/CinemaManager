@@ -18,24 +18,10 @@ import java.util.List;
 
 public class MovieDaoImpl extends BaseDao implements MovieDao {
 
-    private Connection conn = null; //建立的连接
-
-    private PreparedStatement pstmt = null; //将要预编的SQL
-
-    private ResultSet rs = null;//结果集
-
     @Override
     public List<Movie> getMovies(String sql, String[] param) {
         List<Movie> movieList = new ArrayList<>();
         try {
-//            conn = getConn();
-//            pstmt = conn.prepareStatement(sql);
-//            if (param != null) {
-//                for (int i = 0; i < param.length; i++) {
-//                    pstmt.setString(i + 1, param[i]);
-//                }
-//            }
-//            rs = pstmt.executeQuery();
             connectSql(sql, param);
             while (rs.next()) {
                 Movie movie = new Movie();
