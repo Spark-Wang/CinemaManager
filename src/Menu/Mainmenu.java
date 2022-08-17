@@ -22,7 +22,7 @@ public class Mainmenu {
             System.out.println("===========欢迎进入影院管理系统============");
             System.out.println("1.用户登陆\t2.用户注册\t3.退出");
             System.out.print("请输入数字选择要进行的操作：");
-            input = scanner.nextInt();
+            input = inputCheck();
             switch (input){
                 case 1:
                     LoginMenu();

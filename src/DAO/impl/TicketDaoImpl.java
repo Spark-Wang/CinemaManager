@@ -103,15 +103,15 @@ public class TicketDaoImpl extends BaseDao implements TicketDao {
         try{
             String sql;
             if(C_type.equals("Manager")){
-                sql = "select customer.C_name, movie.M_name, hall.H_id, hall.H_name, ticket.H_line, ticket.H_row, ticket.T_time, movie.M_price\n"
+                sql = "select customer.C_name, movie.M_name, hall.H_id, hall.H_name, ticket.H_line, ticket.H_row, ticket.T_time, movie.M_price "
                         + "from ticket join customer on ticket.C_id = customer.C_id "
                         + "join movie on ticket.M_id = movie.M_id "
-                        + "join hall on ticket.H_id = hall.H_id";
+                        + "join hall on ticket.H_id = hall.H_id ";
             }else{
-                sql = "select customer.C_name, movie.M_name, hall.H_id, hall.H_name, ticket.H_line, ticket.H_row, ticket.T_time, movie.M_price\n"
+                sql = "select customer.C_name, movie.M_name, hall.H_id, hall.H_name, ticket.H_line, ticket.H_row, ticket.T_time, movie.M_price "
                         + "from ticket join customer on ticket.C_id = customer.C_id "
                         + "join movie on ticket.M_id = movie.M_id "
-                        + "join hall on ticket.H_id = hall.H_id"
+                        + "join hall on ticket.H_id = hall.H_id "
                         + "where ticket.C_id = " + C_id;
             }
             connectSql(sql,null);
@@ -147,10 +147,9 @@ public class TicketDaoImpl extends BaseDao implements TicketDao {
         try{
             Date date = new Date();
             Timestamp timestamp = new Timestamp(date.getTime());
-            String sql = "select movie.M_name, hall.H_id, hall.H_name, scence.T_time, movie.M_durTime, movie.M_price "
+            String sql = "select movie.M_name, hall.H_id, hall.H_name, scence.S_time, movie.M_durTime, movie.M_price "
                     + "from scence join movie on scence.M_id = movie.M_id "
-                    + "join hall on scence.H_id = hall.H_id "
-                    + "where scence.S_time > " + timestamp;
+                    + "join hall on scence.H_id = hall.H_id ";
             connectSql(sql, null);
             while(rs.next()){
                 List<String> scence = new ArrayList<>();

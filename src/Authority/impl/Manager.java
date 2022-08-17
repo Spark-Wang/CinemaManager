@@ -14,10 +14,11 @@ public class Manager implements CinemaMgr {
 
     public Manager(int C_id){
         this.C_id = C_id;
+        managerService.setC_id(C_id);
     }
     @Override
     public void search() {
-
+        managerService.mgrSearch();
     }
 
     @Override
