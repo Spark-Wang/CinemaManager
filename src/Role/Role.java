@@ -2,7 +2,6 @@ package Role;
 
 import Authority.CinemaMgr;
 import Authority.Normal;
-import com.sun.javaws.IconUtil;
 
 /**
  * @author Peiqi Wang
@@ -78,22 +77,6 @@ public class Role {
             return;
         }
         cinemaMgr.delScence();
-    }
-
-    public void addUser(){
-        if(cinemaMgr == null){
-            System.out.println("请按管理员登陆");
-            return;
-        }
-        cinemaMgr.addUser();
-    }
-
-    public void updateUser(){
-        if(cinemaMgr == null){
-            System.out.println("请按管理员登陆");
-            return;
-        }
-        cinemaMgr.updateUser();
     }
 
     public void order(){

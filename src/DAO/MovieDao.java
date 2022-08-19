@@ -17,5 +17,5 @@ public interface MovieDao {
      */
     List<Movie> getMovies(String sql, String[] param);
     //更改电影对象
-    int changeMovies(String sql, String[] param);
+    int changeMovies(String sql, Object[] param);
 }

@@ -40,11 +40,22 @@ public class User {
         this.role = role;
     }
 
+    public int inputCheck(){
+        int t;
+        try{
+            t = scanner.nextInt();
+        }catch (Exception e){
+            System.out.println("请输入数字类型!");
+            scanner.nextLine();
+            return -1;
+        }
+        return t;
+    }
+
     public boolean init(){
         List<Customer> customerList = userDao.getAllUser();
         for(Customer customer:customerList){
-            Customer temp = new Customer();
-            temp = customer;
+            Customer temp = customer;
             map.put(temp.getC_name(), temp);
         }
         return map.size() > 0;
@@ -94,7 +105,7 @@ public class User {
                 System.out.println("请输入密码确认：");
                 String password2 = input.next();
                 if(password2.equals(password)){
-                    Customer customer = new Customer(map.size() + 1001, name, password, "User");
+                    Customer customer = new Customer(map.size() + 1, name, password, "User");
                     if(userDao.addUser(customer) > 0){
                         System.out.println("用户信息添加成功");
                         map.put(name, customer);
@@ -110,6 +121,36 @@ public class User {
             System.out.println("请输入正确长度的用户名");
         }
         return false;
+    }
+
+    public void addUser(){
+        regist();
+    }
+
+    public void updateUser(){
+        System.out.println("请输入原用户名：");
+        String c_name = scanner.next();
+        System.out.println("请输入原密码：");
+        String c_password = scanner.next();
+        if(!map.containsKey(c_name) || !map.get(c_name).getC_password().equals(c_password)){
+            System.out.println("输入错误！");
+            return;
+        }
+        int c_id = map.get(c_name).getC_id();
+        System.out.println("请输入新用户名：");
+        String new_name = scanner.next();
+        System.out.println("请输入新密码：");
+        String new_password = scanner.next();
+        System.out.println("请输入新权限：Manager/User");
+        String new_type = scanner.next();
+        Customer customer = new Customer(c_id, new_name, new_password, new_type);
+        String sql = "update customer set C_name = ?,C_password = ?, C_type = ? where C_id = ? and C_name = ?";
+        Object[] param = {customer.getC_name(),customer.getC_password(),customer.getC_type(),customer.getC_id(),c_name};
+        UserDao userDao = new UserDaoImpl();
+        if(userDao.updateUser(sql, param) > 0){
+            System.out.println("修改成功："+customer.getC_id()+"号用户为"+customer.getC_name()+",密码："+customer.getC_password()+"类型："+customer.getC_type());
+        }
+        init();
     }
 
     public void search(){
@@ -144,12 +185,8 @@ public class User {
         role.delScence();
     }
 
-    public void addUser(){
-        role.addUser();
+    public static void main(String[] args) {
+        User user = new User();
+        user.updateUser();
     }
-
-    public void updateUser(){
-        role.updateUser();
-    }
-
 }

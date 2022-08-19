@@ -14,8 +14,4 @@ public interface CinemaMgr {
     void addScence();
 
     void delScence();
-
-    void addUser();
-
-    void updateUser();
 }

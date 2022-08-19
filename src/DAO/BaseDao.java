@@ -24,12 +24,12 @@ public class BaseDao {
 
     protected ResultSet rs = null; // 用户保存查询到的结果集
 
-    protected void connectSql(String sql, String[] param) throws ClassNotFoundException, SQLException {
+    protected void connectSql(String sql, Object[] param) throws ClassNotFoundException, SQLException {
         conn = getConn();
         pstmt = conn.prepareStatement(sql);
         if (param != null) {
             for (int i = 0; i < param.length; i++) {
-                pstmt.setString(i + 1, param[i]);
+                pstmt.setObject(i + 1, param[i]);
             }
         }
         rs = pstmt.executeQuery();

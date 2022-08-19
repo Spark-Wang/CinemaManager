@@ -23,31 +23,22 @@ public class Manager implements CinemaMgr {
 
     @Override
     public void addMovie() {
-
+        managerService.addMovie();
     }
 
     @Override
     public void delMovie() {
-
+        managerService.delMovie();
     }
 
     @Override
     public void addScence() {
-
+        managerService.addScence();
     }
 
     @Override
     public void delScence() {
-
+        managerService.delScence();
     }
 
-    @Override
-    public void addUser() {
-
-    }
-
-    @Override
-    public void updateUser() {
-
-    }
 }

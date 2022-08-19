@@ -16,5 +16,5 @@ public interface UserDao {
     //新增用户
     int addUser(Customer customer);
     //更新用户信息
-    int updateUser(String sql, String[] param);
+    int updateUser(String sql, Object[] param);
 }

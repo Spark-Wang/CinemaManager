@@ -4,9 +4,6 @@ import DAO.BaseDao;
 import DAO.MovieDao;
 import Entity.Movie;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +41,7 @@ public class MovieDaoImpl extends BaseDao implements MovieDao {
     }
 
     @Override
-    public int changeMovies(String sql, String[] params) {
+    public int changeMovies(String sql, Object[] params) {
         return super.executeSQL(sql, params);
     }
 }

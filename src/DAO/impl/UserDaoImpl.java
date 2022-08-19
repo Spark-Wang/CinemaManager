@@ -4,9 +4,6 @@ import DAO.BaseDao;
 import DAO.UserDao;
 import Entity.Customer;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +51,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public int updateUser(String sql, String[] param) {
+    public int updateUser(String sql, Object[] param) {
         return super.executeSQL(sql, param);
     }
 }
