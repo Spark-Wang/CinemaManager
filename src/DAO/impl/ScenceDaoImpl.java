@@ -53,10 +53,11 @@ public class ScenceDaoImpl extends BaseDao implements ScenceDao {
         List<List<String>> scenceList = new ArrayList<>();
         try{
             Date date = new Date();
-            //Timestamp timestamp = new Timestamp(date.getTime());
+            Timestamp timestamp = new Timestamp(date.getTime());
             String sql = "select movie.M_name, hall.H_id, hall.H_name, scence.S_time, movie.M_durTime, movie.M_price "
                     + "from scence join movie on scence.M_id = movie.M_id "
-                    + "join hall on scence.H_id = hall.H_id ";
+                    + "join hall on scence.H_id = hall.H_id "
+                    + "where scence.S_time > '" + timestamp +"'";
             connectSql(sql, null);
             while(rs.next()){
                 List<String> scence = new ArrayList<>();
@@ -77,4 +78,12 @@ public class ScenceDaoImpl extends BaseDao implements ScenceDao {
         }
         return scenceList;
     }
+
+//    public static void main(String[] args) {
+//        Date date = new Date();
+//        Timestamp timestamp = new Timestamp(date.getTime());
+//        String time = timestamp.toString();
+//        System.out.println(time);
+//        ScenceDao scenceDao = new ScenceDaoImpl();
+//    }
 }

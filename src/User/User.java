@@ -19,10 +19,10 @@ import java.util.Scanner;
  */
 public class User {
     private Role role = null;//用户的角色
-    public UserDao userDao = new UserDaoImpl();
-    public HashMap<String,Customer> map = new HashMap<>();
-    public String userName;
-    Scanner scanner = new Scanner(System.in);
+    public UserDao userDao = new UserDaoImpl();//对用户表的操作
+    public HashMap<String,Customer> map = new HashMap<>();//暂存取出的用户数据，便于查询
+    public String userName;//当前登陆用户的用户名
+    Scanner scanner = new Scanner(System.in);//便捷获取输入
 
     public Role getRole() {
         return role;
@@ -185,8 +185,8 @@ public class User {
         role.delScence();
     }
 
-    public static void main(String[] args) {
-        User user = new User();
-        user.updateUser();
-    }
+//    public static void main(String[] args) {
+//        User user = new User();
+//        user.updateUser();
+//    }
 }

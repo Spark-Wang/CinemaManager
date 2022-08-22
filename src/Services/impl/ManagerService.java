@@ -90,8 +90,7 @@ public class ManagerService extends Service implements MovieHandler, ScenceHandl
         System.out.println("请输入要删除的电影id:");
         int movie_id = inputCheck();
         MovieDao movieDao = new MovieDaoImpl();
-        List<Movie> movieList = new ArrayList<>();
-        movieList = movieDao.getMovies("select * from movie where m_id = " + movie_id,null);
+        List<Movie> movieList = movieDao.getMovies("select * from movie where m_id = " + movie_id,null);
         if(movieList.size() > 0){
             Movie movie = movieList.get(0);
             String sql = "delete from movie where m_id = " + movie_id;

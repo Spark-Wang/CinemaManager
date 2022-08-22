@@ -10,11 +10,11 @@ import Services.impl.ManagerService;
 public class Manager implements CinemaMgr {
     private int C_id;
     private String C_type = "Manager";
-    public ManagerService managerService = new ManagerService(C_id,C_type);
+    public ManagerService managerService;
 
     public Manager(int C_id){
         this.C_id = C_id;
-        managerService.setC_id(C_id);
+        this.managerService = new ManagerService(C_id,C_type);
     }
     @Override
     public void search() {

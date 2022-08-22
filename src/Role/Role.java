@@ -9,9 +9,10 @@ import Authority.Normal;
  */
 public class Role {
 
-    private String description;
-    private Normal normal = null;
-    private CinemaMgr cinemaMgr = null;
+    private String description;//设置manager或user
+    //普通 管理 一个role只能有一种被赋值
+    private Normal normal = null;//普通的权限
+    private CinemaMgr cinemaMgr = null;//管理的权限
 
     public String getDescription() {
         return description;

@@ -19,8 +19,9 @@ import java.util.Scanner;
  * @date 2022-08-14
  */
 public abstract class Service {
-    private int C_id;
-    private String C_type;
+
+    private int C_id;//调用服务的用户id
+    private String C_type;//调用服务的用户类型
     Scanner scanner = new Scanner(System.in);
     SimpleDateFormat formatDay = new SimpleDateFormat("yyyy-MM-dd");//电影的上下架时间
     SimpleDateFormat formatTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//场次的安排时间
@@ -60,7 +61,7 @@ public abstract class Service {
     }
     /**
      * 打印放映场次列表
-     * @return 场次放映的电影名称列表
+     * @return 各场次放映的电影名称列表
      */
     public List<String> getScence(){
         ScenceDao scenceDao = new ScenceDaoImpl();
@@ -81,11 +82,11 @@ public abstract class Service {
      */
     public void getOrderRecord(){
         TicketDaoImpl ticketDao = new TicketDaoImpl();
-        List<List<String>> ticketlist = ticketDao.getFullTicket(C_id,C_type);
+        List<List<String>> ticketList = ticketDao.getFullTicket(C_id,C_type);
         //用户名 电影名 影厅ID 影厅名 座位行列 时间 票价
         System.out.println("序号\t\t\t用户名\t\t\t\t电影名\t\t\t\t影厅ID\t\t影厅名\t\t\t\t座位排\t\t座位列\t\t时间\t\t\t\t\t\t\t票价");
-        for(int i = 0;i < ticketlist.size();i ++){
-            List<String> ticket = ticketlist.get(i);
+        for(int i = 0;i < ticketList.size();i ++){
+            List<String> ticket = ticketList.get(i);
             System.out.format("%-8d\t%-16s\t%-16s\t%-10s\t%-16s\t%-8s\t%-10s\t%-26s\t%-8s\n",(i + 1),ticket.get(0),ticket.get(1),ticket.get(2)+"号厅",ticket.get(3),ticket.get(4),ticket.get(5),ticket.get(6),ticket.get(7)+"元");
         }
     }
@@ -128,7 +129,7 @@ public abstract class Service {
 ////        service.printAllUsers();
 ////        service.printAllMovies();
 ////        service.getOrderRecord();
-////        service.getScence();
-//            service.printAllHall();
+//        //service.getScence();
+//          //  service.printAllHall();
 //    }
 }
